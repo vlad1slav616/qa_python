@@ -6,7 +6,7 @@ class TestBooksCollector:
 
     def test_add_new_book_add_two_books(self):
         collector = BooksCollector()
-
+        
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
 
@@ -87,3 +87,16 @@ class TestBooksCollector:
         collector.delete_book_from_favorites("Интерстеллар")
 
         assert collector.get_list_of_favorites_books() == []
+
+    def test_get_book_genre_return_correct_genre(self):
+        collector = BooksCollector()
+        collector.add_new_book("Солярис")
+        collector.set_book_genre("Солярис", "Фантастика")
+
+        assert collector.get_book_genre("Солярис") == "Фантастика"
+
+    def test_get_books_genre_return_books_genre_dict(self):
+        collector = BooksCollector()
+        collector.add_new_book("Интерстеллар")
+
+        assert collector.get_books_genre() == {"Интерстеллар": ""}    
